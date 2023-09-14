@@ -10,10 +10,10 @@
 # NOTE: Command line options takes precedence over those in config files
 
 # Snapper config to backup
-CONFIG = root # This is an inline comment
+CONFIG = root
 
 # Destination to local backup, note must not contain ~ or any env variables
-#PATH=/mnt/backup
+PATH=/internal_ssd/root/backups
 
 # Backup to remote server use this instead. Replace 'localhost' with
 # the hostname of the server.
@@ -23,8 +23,8 @@ CONFIG = root # This is an inline comment
 # PRIVATE_KEY=/root/.ssh/baksnapperd_rsa
 
 # YES, yes, Yes and 1 are recognized as true, rest is false.
-#PRUNE  = NO
-#ALL    = NO
+PRUNE  = 1
+ALL    = 1
 #VERBOSE= NO
 
 # If the baksnapper daemon is called something else, change the name here.
