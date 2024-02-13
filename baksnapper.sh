@@ -277,6 +277,7 @@ p_all=${p_all=0}
 [[ -z $p_dest ]] && error "No path specified!"
 
 function exit-msg {
+    # shellcheck disable=SC2317
     notify-send -u critical "Done backing up $p_config. Safe to turn off computer."
 }
 
@@ -517,7 +518,7 @@ function backup {
     if [[ "${#common[@]}" == 0 ]]
     then
         echo "Initialize backup"
-        if [ $p_all -eq 1 ]
+        if [ "$p_all" -eq 1 ]
         then
             # Send the first snapshot as a whole then the rest will be
             # sent incremental.

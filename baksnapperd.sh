@@ -31,9 +31,9 @@ case "$1" in
     version) # Return what version of the API it's using, always one integer
         echo 2
         ;;
-    list-snapshots) # List snapshots at backup location
+    list-snapshots) # List snapshots at src/dest location
         shift
-        find "$1" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort -g
+        find "$1" -mindepth 1 -maxdepth 1 -type d -printf "%f\n" | sort -g | xargs -I{} sh -c 'btrfs prop get "/.snapshots/{}/snapshot" ro | grep -q true && echo {}'
         ;;
     get-snapper-root) # Return the location of the .snapshots directory
         shift
@@ -121,6 +121,7 @@ case "$1" in
                 error "$1/latest exists and is not a symbolic link. Link is not created."
             fi
         fi
+        # shellcheck disable=SC2045
         for dir in $( ls -d1v "$1"/* ); do
             if [[ -d "$dir/snapshot" && ! -h "$dir" ]]; then
                 snapshots+=("$dir")
