@@ -26,6 +26,11 @@ Create file `/etc/cron.d/baksnapper` with the following contents:
 ```
 5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/root.bsconf
 5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/home.bsconf
+5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/var.bsconf
+5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/opt.bsconf
+5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/srv.bsconf
+5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/root-user.bsconf
+5 * * * * root /usr/bin/baksnapper --configfile /etc/baksnapper/usr-local.bsconf
 ```
 
 Secure cron file:
